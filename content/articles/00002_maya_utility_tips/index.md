@@ -1,7 +1,7 @@
 +++
 date = "2023-04-18"
 draft = false
-title = "便利機能まとめ"
+title = "Maya便利機能まとめ"
 slug = "0759a93c58b34724888bdbd5fd6c2c61"
 tags = ["Maya"]
 useGitDate = false

@@ -1,0 +1,4 @@
+{{ $tag := . }}
+{{ $color := index site.Data.tag_colors $tag | default site.Data.tag_colors.default }}
+
+<span class="tag" style="background-color: {{ $color }};">{{ $tag }}</span>

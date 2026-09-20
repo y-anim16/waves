@@ -171,8 +171,8 @@ set_pos_y(@P);
 ```
 
 結果  
-![alt text](image-2.png)
-![alt text](image-1.png)
+{{< figure src="image-2.png" alt="" >}}
+{{< figure src="image-1.png" alt="" >}}
 
 ### アトリビュートを渡したいけど、値は変えたくないとき
 逆に値を変えたくない場合、**const**を付ける  
@@ -190,7 +190,7 @@ Houdini
 set_pos_y(@P);
 ```
 エラーの表示  
-![alt text](image.png)
+{{< figure src="image.png" alt="" >}}
 
 ### アトリビュートを複数渡したいとき
 VEX側はセミコロン(;), Houdini側はカンマ(,)で区切る必要がある  
@@ -209,15 +209,15 @@ set_pos_y(@P, @ptnum);
 ```
 
 結果  
-![alt text](image-3.png)
+{{< figure src="image-3.png" alt="" >}}
 
 ### ch() を使いたいとき
 ボタンポチでUIからパラメータを調整できるようにしたい
 
-![alt text](image-4.png)
+{{< figure src="image-4.png" alt="" >}}
 
 Houdini側でch()を記述して起き、VEXに渡すのは値だけにした  
-![alt text](image-5.png)
+{{< figure src="image-5.png" alt="" >}}
 
 VEX
 ```text

@@ -1,0 +1,16 @@
+<figure>
+    {{- $u := urls.Parse (.Get "src") -}}
+    {{- $src := $u.String -}}
+
+    {{- if not $u.IsAbs -}}
+    {{- with or (.Page.Resources.Get $u.Path) (resources.Get $u.Path) -}}
+    {{- $src = .RelPermalink -}}
+    {{- end -}}
+    {{- end -}}
+
+    <img src="{{ $src }}" alt="{{ .Get " alt" }}" class="js-preview-image">
+
+    {{- with .Get "caption" -}}
+    <figcaption>{{ . }}</figcaption>
+    {{- end -}}
+</figure>

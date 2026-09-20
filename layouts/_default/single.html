@@ -12,47 +12,46 @@
 
 <head>
     <meta charset="UTF-8">
+    {{ partial "css.html" . }}
     <title>{{ .Title }}</title>
+    {{ with resources.Get "js/image-preview.js" }}
+    <script src="{{ .RelPermalink }}"></script>
+    {{ end }}
 </head>
 
 <body>
 
     <header>
         {{ if hugo.IsServer }}
-        <div style="
-            background: #8fd8c1;
-            color: white;
-            text-align: center;
-            padding: 6px 0;
-            margin: -8px -8px 0;
-        ">
+        <div class="local-banner">
             LOCAL
         </div>
         {{ end }}
-        <a href="/">{{ .Site.Title }}</a>
+        <a href="/" class="site-title single-site-title">{{ .Site.Title }}</a>
     </header>
 
-    <main>
-        <h1>{{ .Title }}</h1>
+    <article>
+        <main>
+            <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
+            <div class="article-meta">
+                <time>
+                    {{ if .Params.useGitDate }}
+                    {{ .GitInfo.AuthorDate.Format "2006.01.02" }}
+                    {{ else }}
+                    {{ .Date.Format "2006.01.02" }}
+                    {{ end }}
+                </time>
 
-        <time>
-            {{ if .Params.useGitDate }}
-            {{ .GitInfo.AuthorDate.Format "2006.01.02" }}
-            {{ else }}
-            {{ .Date.Format "2006.01.02" }}
-            {{ end }}
-        </time>
+                {{ with .Params.tags }}
+                {{ range . }}
+                {{ partial "category_tag.html" . }}
+                {{ end }}
+                {{ end }}
+            </div>
 
-        {{ with .Params.tags }}
-        <span style="margin-left: 1em;">
-            {{ range $index, $tag := . }}
-            {{ if $index }}, {{ end }}{{ $tag }}
-            {{ end }}
-        </span>
-        {{ end }}
-
-        {{ .Content }}
-    </main>
+            {{ .Content }}
+        </main>
+    </article>
 
 </body>
 

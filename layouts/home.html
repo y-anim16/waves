@@ -12,6 +12,7 @@
 
 <head>
     <meta charset="UTF-8">
+    {{ partial "css.html" . }}
     <title>{{ .Title }}</title>
 </head>
 
@@ -19,52 +20,36 @@
 
     <header>
         {{ if hugo.IsServer }}
-        <div style="
-            background: #8fd8c1;
-            color: white;
-            text-align: center;
-            padding: 6px 0;
-            margin: -8px -8px 0;
-        ">
+        <div class="local-banner">
             LOCAL
         </div>
         {{ end }}
 
-        <a href="/">{{ .Site.Title }}</a>
+        <a href="/" class="site-title">{{ .Site.Title }}</a>
     </header>
 
     {{ .Content }}
 
-    <h2>Articles</h2>
-
-    <style>
-        li {
-            margin-bottom: 1em;
-        }
-    </style>
-
-    <ul>
+    <ul class="article-list">
         {{ range where .Site.RegularPages "Section" "articles" }}
-        <li style="margin-bottom: 1em;">
-            <div>
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            </div>
+        <li class="article-card">
+            <a href="{{ .RelPermalink }}">
+                <div>
+                    {{ .Title }}
+                </div>
 
-            <div>
-                {{ with .Params.tags }}
-                {{ range $index, $tag := . }}
-                {{ if $index }}, {{ end }}{{ $tag }}
-                {{ end }}
-                {{ end }}
-            </div>
+                <div>
+                    {{ .Date.Format "2006.01.02" }}
+                </div>
 
-            <div>
-                {{ if .Params.useGitDate }}
-                {{ .GitInfo.AuthorDate.Format "2006.01.02" }}
-                {{ else }}
-                {{ .Date.Format "2006.01.02" }}
-                {{ end }}
-            </div>
+                <div class="card-tags">
+                    {{ with .Params.tags }}
+                    {{ range . }}
+                    {{ partial "category_tag.html" . }}
+                    {{ end }}
+                    {{ end }}
+                </div>
+            </a>
         </li>
         {{ end }}
     </ul>
