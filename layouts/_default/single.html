@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<style>
+    header a {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: inherit;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title }}</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="/">{{ .Site.Title }}</a>
+    </header>
+
+    <main>
+        <h1>{{ .Title }}</h1>
+
+        <time>
+            {{ .Date.Format "2006.01.02" }}
+        </time>
+
+        {{ with .Params.tags }}
+        <span style="margin-left: 1em;">
+            {{ range $index, $tag := . }}
+            {{ if $index }}, {{ end }}{{ $tag }}
+            {{ end }}
+        </span>
+        {{ end }}
+
+        {{ .Content }}
+    </main>
+
+</body>
+
+</html>

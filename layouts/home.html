@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<style>
+    header a {
+        font-size: 3.0rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: inherit;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title }}</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="/">{{ .Site.Title }}</a>
+    </header>
+
+    {{ .Content }}
+
+    <h2>Articles</h2>
+
+    <style>
+        li {
+            margin-bottom: 1em;
+        }
+    </style>
+
+    <ul>
+        {{ range where .Site.RegularPages "Section" "articles" }}
+        <li style="margin-bottom: 1em;">
+            <div>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </div>
+
+            <div>
+                {{ with .Params.tags }}
+                {{ range $index, $tag := . }}
+                {{ if $index }}, {{ end }}{{ $tag }}
+                {{ end }}
+                {{ end }}
+            </div>
+
+            <div>
+                {{ .Date.Format "2006.01.02" }}
+            </div>
+        </li>
+        {{ end }}
+    </ul>
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+baseURL = 'https://example.org/'
+locale = 'jp'
+title = 'WAVEs'
+
+[permalinks]
+  articles = "/articles/:slug/"
