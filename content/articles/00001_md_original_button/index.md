@@ -4,6 +4,7 @@ draft = false
 title = "自作したボタンを使用する"
 slug = "d76f6a5693fb65fb38a746a4129eca44"
 tags = ["MarvelousDesigner"]
+useGitDate = false
 +++
 
 デフォルトで用意されているボタンではなく、自作したボタンを使用したかったのですが、それをするのに手こずったので備忘録としてまとめます

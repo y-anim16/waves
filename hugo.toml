@@ -1,6 +1,7 @@
 baseURL = 'https://y-anim16.github.io/waves/'
 locale = 'jp'
 title = 'WAVEs'
+enableGitInfo = true
 
 [permalinks]
   articles = "/articles/:slug/"

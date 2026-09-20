@@ -4,6 +4,7 @@ draft = false
 title = "Blenderでリギングを行うときのメモ"
 slug = "8835deb813c66a53f34b3266b310bdff"
 tags = ["Blender"]
+useGitDate = false
 +++
 
 ## コントローラでボーンを動かす

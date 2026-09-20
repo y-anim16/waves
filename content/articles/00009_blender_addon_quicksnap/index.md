@@ -4,6 +4,7 @@ draft = false
 title = "Blender用アドオン QuikSnapを使う"
 slug = "aa19c82e47d3dd06d48081ae346dfc25"
 tags = ["Blender"]
+useGitDate = false
 +++
 
 標準のスナップ機能が自分には扱いづらく感じたため、「QuickSnap」というAddonを使ってみる。

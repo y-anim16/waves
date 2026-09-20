@@ -4,6 +4,7 @@ draft = false
 title = "Blenderでアニメーションを作るときのメモ"
 slug = "f14237136c1083f7b421d02b745ce5b7"
 tags = ["Blender"]
+useGitDate = false
 +++
 
 随時更新

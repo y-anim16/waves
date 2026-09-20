@@ -4,6 +4,7 @@ draft = false
 title = "BlenderでFKとIKを切り替え可能なリグを組む"
 slug = "e932b64abc1db059a2c9af30cec21ff1"
 tags = ["Blender"]
+useGitDate = false
 +++
 
 一例として組み方をまとめておく

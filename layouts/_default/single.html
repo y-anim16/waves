@@ -18,6 +18,17 @@
 <body>
 
     <header>
+        {{ if hugo.IsServer }}
+        <div style="
+            background: #8fd8c1;
+            color: white;
+            text-align: center;
+            padding: 6px 0;
+            margin: -8px -8px 0;
+        ">
+            LOCAL
+        </div>
+        {{ end }}
         <a href="/">{{ .Site.Title }}</a>
     </header>
 
@@ -25,7 +36,11 @@
         <h1>{{ .Title }}</h1>
 
         <time>
+            {{ if .Params.useGitDate }}
+            {{ .GitInfo.AuthorDate.Format "2006.01.02" }}
+            {{ else }}
             {{ .Date.Format "2006.01.02" }}
+            {{ end }}
         </time>
 
         {{ with .Params.tags }}

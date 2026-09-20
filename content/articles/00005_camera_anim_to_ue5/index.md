@@ -4,6 +4,7 @@ draft = false
 title = "カメラリグのアニメーションをUE5に持っていく"
 slug = "e97e6a64f330646ea41badb3affe7e16"
 tags = ["Maya", "UnrealEngine"]
+useGitDate = false
 +++
 
 ## 環境

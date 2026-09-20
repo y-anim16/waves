@@ -4,6 +4,7 @@ draft = false
 title = "AlembicCacheを使用したキャラクターアニメーション"
 slug = "61a9e6c6980f2e80386ea89715403e2f"
 tags = ["Maya", "UnrealEngine"]
+useGitDate = false
 +++
 
 {{< figure src="nd2c71039dd4e_913d39087ce3f44e95512c1b75e379d2.png" alt="" >}}
@@ -12,8 +13,8 @@ Mayaでアニメーションを作成し、UnrealEngineでレンダリングす�
 
 ## 環境
 
-　・Maya2022
-　・UnrealEngine5.3
+- Maya2022
+- UnrealEngine5.3
 
 ## なぜAlembicCache？
 
@@ -21,8 +22,8 @@ MayaとUnrealEngine(以下UE)間でファイルのやり取りをする際、よ
 
 使用したリグは、ジョイント/ブレンドシェイプ/デフォーマによって変形を行えるようになっていますが、FBXでは以下のような問題がありました。
 
-・ブレンドシェイプはインポートできるけど、そのアニメーションはインポートできない
-・デフォーマによる変形をインポートできない
+- ブレンドシェイプはインポートできるけど、そのアニメーションはインポートできない
+- デフォーマによる変形をインポートできない
 
 
 {{< figure src="nd2c71039dd4e_1696739239687-4j0wkSMNRC.png" alt="" caption="Mayaで作成したアニメーションをUEでやり直し…？" >}}

@@ -4,6 +4,7 @@ draft = true
 title = "Duikを触ってみる"
 slug = "57f9917af3d8c776c6e43933a7e38236"
 tags = ["AfterEffects"]
+useGitDate = false
 +++
 
 公式ドキュメント

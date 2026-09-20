@@ -4,6 +4,7 @@ draft = false
 title = "UXPを触ってみる"
 slug = "bf11b2944b27db7a489f0604a5a7d9b0"
 tags = ["Photoshop"]
+useGitDate = false
 +++
 
 今日では、PhotoshopなどのAdobeソフトのプラグイン開発は、UXPで行うのが良さそうなので触ってみます。

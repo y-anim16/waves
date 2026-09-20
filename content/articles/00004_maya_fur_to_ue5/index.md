@@ -4,6 +4,7 @@ draft = false
 title = "MAYAからUE5にデータを持っていく～Fur編～"
 slug = "6ffa82c0cc8f2cd00dfd0160e6ed61e5"
 tags = ["Maya", "UnrealEngine"]
+useGitDate = false
 +++
 
 ## MAYAでデータを作成する

@@ -4,6 +4,7 @@ draft = false
 title = "UXPプラグインを配布する方法"
 slug = "658f7528bc6fb683f5cc296001251a88"
 tags = ["Photoshop"]
+useGitDate = false
 +++
 
 ## パッケージ化する

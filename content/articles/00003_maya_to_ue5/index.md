@@ -4,6 +4,7 @@ draft = false
 title = "MAYAからUE5にデータを持っていく"
 slug = "757d6dc4946afdc563a9437df4bca383"
 tags = ["Maya", "UnrealEngine"]
+useGitDate = false
 +++
 
 自分用メモ
