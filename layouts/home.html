@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html class="site-background" lang="ja">
 
 <style>
     header a {
@@ -30,11 +30,11 @@
 
     {{ .Content }}
 
-    <ul class="article-list">
+    <ul class="grid grid-cols-3 auto-rows-fr gap-6 list-none p-0 ml-[35%] mr-[15%]">
         {{ range where .Site.RegularPages "Section" "articles" }}
-        <li class="article-card">
-            <a href="{{ .RelPermalink }}">
-                <div>
+        <li class="h-full box-border min-w-0 p-6 bg-white border border-[#ddd] rounded-lg">
+            <a href="{{ .RelPermalink }}" class="flex flex-col h-full !no-underline !text-black">
+                <div class="text-xl font-bold">
                     {{ .Title }}
                 </div>
 
@@ -42,7 +42,7 @@
                     {{ .Date.Format "2006.01.02" }}
                 </div>
 
-                <div class="card-tags">
+                <div class="mt-auto text-right">
                     {{ with .Params.tags }}
                     {{ range . }}
                     {{ partial "category_tag.html" . }}

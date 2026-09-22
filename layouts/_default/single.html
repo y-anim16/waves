@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html class="site-background" lang="ja">
 
 <style>
     header a {
@@ -30,10 +30,10 @@
         <a href="{{ .Site.Home.RelPermalink }}" class="site-title single-site-title">{{ .Site.Title }}</a>
     </header>
 
-    <article>
+    <article class="text-[18px] ml-[25%] mr-[15%] p-8 bg-white wrap-anywhere">
         <main>
             <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
-            <div class="article-meta">
+            <div class="mb-6">
                 <time>
                     {{ if .Params.useGitDate }}
                     {{ .GitInfo.AuthorDate.Format "2006.01.02" }}

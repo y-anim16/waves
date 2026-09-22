@@ -2,19 +2,11 @@
 @plugin "@tailwindcss/typography";
 @source "hugo_stats.json";
 
-
-
-html {
-    min-height: 100%;
-    background: linear-gradient(180deg, #e8eaf8, #e8f8f3);
+@layer components {
+    .site-background {
+        @apply min-h-full bg-gradient-to-b from-[#e8eaf8] to-[#e8f8f3];
+    }
 }
-
-body {
-    margin: 0;
-    min-height: 100%;
-    background: transparent;
-}
-
 
 h1 {
     font-size: 2em;
@@ -26,6 +18,25 @@ h2 {
     font-size: 1.5em;
     font-weight: bold;
     margin-block: 0.83em;
+}
+
+@layer components {
+    article h2 {
+        position: relative;
+        padding-bottom: 0.4em;
+    }
+
+    article h2::after {
+        content: "";
+        display: block;
+        height: 3px;
+        margin-top: 0.2em;
+
+        background: linear-gradient(to right,
+                #8fd8c1 0%,
+                #8fd8c1 92%,
+                transparent 100%);
+    }
 }
 
 h3 {
@@ -107,68 +118,10 @@ img {
     cursor: zoom-in;
 }
 
-:root {
-    --article-margin-left: 25%;
-    --article-margin-right: 15%;
-    --home-list-margin-left: 35%;
-    --home-list-margin-right: 15%;
-}
-
-article {
-    font-size: 18px;
-    margin-left: var(--article-margin-left);
-    margin-right: var(--article-margin-right);
-    padding: 2rem;
-    background: white;
-    overflow-wrap: anywhere;
-}
-
 article pre {
     overflow-wrap: normal;
     overflow-x: auto;
 }
-
-.article-card {
-    height: 100%;
-    box-sizing: border-box;
-
-    padding: 1.5rem;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    min-width: 0;
-}
-
-.article-card a {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-
-    color: inherit;
-    text-decoration: none;
-}
-
-.article-card a div:first-child {
-    font-size: 1.25em;
-    font-weight: bold;
-}
-
-.card-tags {
-    margin-top: auto;
-    text-align: right;
-}
-
-.article-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 1fr;
-    gap: 1.5rem;
-
-    list-style: none;
-    padding: 0;
-    margin: 0 var(--home-list-margin-right) 0 var(--home-list-margin-left);
-}
-
 
 .site-title {
     display: inline-block;
@@ -188,74 +141,49 @@ article pre {
     font-size: 3.0em;
 }
 
-.local-banner {
-    background: #8fd8c1;
-    color: white;
-    text-align: center;
-    padding: 6px 0;
-    margin: -8px -8px 0;
+@layer components {
+    .local-banner {
+        @apply bg-[#8fd8c1] text-white text-center py-[6px] -mt-2 -mx-2;
+    }
 }
 
-.tag {
-    display: inline-block;
-    padding: 0.2em 0.6em;
-    border-radius: 9999px;
-    font-size: 0.85em;
+
+@layer components {
+    .tag {
+        @apply inline-block px-[0.6em] py-[0.2em] rounded-full text-[0.85em];
+    }
 }
 
-.article-meta {
-    margin-bottom: 1.5rem;
-}
+@layer components {
+    .article-navigation {
+        @apply grid grid-cols-2 mt-8 pt-6 border-t border-[#ddd];
+    }
 
-.article-navigation {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    .article-navigation-area {
+        @apply min-w-0;
+    }
 
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    .article-navigation-prev {
+        @apply border-r border-[#ddd];
+    }
 
-    border-top: 1px solid #ddd;
-}
+    .article-navigation-item {
+        @apply block min-w-0 p-4 !text-inherit !no-underline wrap-anywhere;
+    }
 
-.article-navigation-area {
-    min-width: 0;
-}
+    .article-navigation-prev .article-navigation-item {
+        @apply text-left;
+    }
 
-.article-navigation-prev {
-    border-right: 1px solid #ddd;
-}
+    .article-navigation-next .article-navigation-item {
+        @apply text-right;
+    }
 
-.article-navigation-item {
-    display: block;
+    .article-navigation-label {
+        @apply block mb-2 text-[0.85em] text-[#666];
+    }
 
-    min-width: 0;
-    padding: 1rem;
-
-    color: inherit;
-    text-decoration: none;
-
-    overflow-wrap: anywhere;
-}
-
-.article-navigation-prev .article-navigation-item {
-    text-align: left;
-}
-
-.article-navigation-next .article-navigation-item {
-    text-align: right;
-}
-
-.article-navigation-label {
-    display: block;
-    margin-bottom: 0.5rem;
-
-    font-size: 0.85em;
-    color: #666;
-}
-
-.article-navigation-title {
-    display: block;
-
-    text-align: left;
-    font-weight: bold;
+    .article-navigation-title {
+        @apply block text-left font-bold;
+    }
 }
