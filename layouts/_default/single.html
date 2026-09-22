@@ -50,6 +50,26 @@
             </div>
 
             {{ .Content }}
+
+            <nav class="article-navigation">
+                <div class="article-navigation-area article-navigation-prev">
+                    {{ with .PrevInSection }}
+                    <a href="{{ .RelPermalink }}" class="article-navigation-item">
+                        <span class="article-navigation-label">← 前の記事</span>
+                        <span class="article-navigation-title">{{ .Title }}</span>
+                    </a>
+                    {{ end }}
+                </div>
+
+                <div class="article-navigation-area article-navigation-next">
+                    {{ with .NextInSection }}
+                    <a href="{{ .RelPermalink }}" class="article-navigation-item">
+                        <span class="article-navigation-label">次の記事 →</span>
+                        <span class="article-navigation-title">{{ .Title }}</span>
+                    </a>
+                    {{ end }}
+                </div>
+            </nav>
         </main>
     </article>
 
