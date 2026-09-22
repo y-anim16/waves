@@ -8,6 +8,29 @@
         text-decoration: none;
         color: inherit;
     }
+
+    aside a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+
+    aside ul {
+        list-style: none;
+    }
+
+    aside li {
+        margin-bottom: 0.8rem;
+    }
+
+    aside>nav>ul>li>ul {
+        margin-top: 0.7rem;
+        padding-left: 1.2rem;
+    }
+
+    aside>nav>ul>li>ul li {
+        font-size: 1.0em;
+    }
 </style>
 
 <head>
@@ -30,49 +53,55 @@
         <a href="{{ .Site.Home.RelPermalink }}" class="site-title single-site-title">{{ .Site.Title }}</a>
     </header>
 
-    <article class="text-[18px] ml-[25%] mr-[15%] p-8 bg-white wrap-anywhere">
-        <main>
-            <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
-            <div class="mb-6">
-                <time>
-                    {{ if .Params.useGitDate }}
-                    {{ .GitInfo.AuthorDate.Format "2006.01.02" }}
-                    {{ else }}
-                    {{ .Date.Format "2006.01.02" }}
+    <div class="flex ml-[8%] mr-[5%] gap-8">
+        <article class="flex-1 min-w-0 text-[18px] p-8 bg-white wrap-anywhere">
+            <main>
+                <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
+                <div class="mb-6">
+                    <time>
+                        {{ if .Params.useGitDate }}
+                        {{ .GitInfo.AuthorDate.Format "2006.01.02" }}
+                        {{ else }}
+                        {{ .Date.Format "2006.01.02" }}
+                        {{ end }}
+                    </time>
+
+                    {{ with .Params.tags }}
+                    {{ range . }}
+                    {{ partial "category_tag.html" . }}
                     {{ end }}
-                </time>
-
-                {{ with .Params.tags }}
-                {{ range . }}
-                {{ partial "category_tag.html" . }}
-                {{ end }}
-                {{ end }}
-            </div>
-
-            {{ .Content }}
-
-            <nav class="article-navigation">
-                <div class="article-navigation-area article-navigation-prev">
-                    {{ with .PrevInSection }}
-                    <a href="{{ .RelPermalink }}" class="article-navigation-item">
-                        <span class="article-navigation-label">← 前の記事</span>
-                        <span class="article-navigation-title">{{ .Title }}</span>
-                    </a>
                     {{ end }}
                 </div>
 
-                <div class="article-navigation-area article-navigation-next">
-                    {{ with .NextInSection }}
-                    <a href="{{ .RelPermalink }}" class="article-navigation-item">
-                        <span class="article-navigation-label">次の記事 →</span>
-                        <span class="article-navigation-title">{{ .Title }}</span>
-                    </a>
-                    {{ end }}
-                </div>
-            </nav>
-        </main>
-    </article>
+                {{ .Content }}
 
+                <nav class="article-navigation">
+                    <div class="article-navigation-area article-navigation-prev">
+                        {{ with .PrevInSection }}
+                        <a href="{{ .RelPermalink }}" class="article-navigation-item">
+                            <span class="article-navigation-label">← 前の記事</span>
+                            <span class="article-navigation-title">{{ .Title }}</span>
+                        </a>
+                        {{ end }}
+                    </div>
+
+                    <div class="article-navigation-area article-navigation-next">
+                        {{ with .NextInSection }}
+                        <a href="{{ .RelPermalink }}" class="article-navigation-item">
+                            <span class="article-navigation-label">次の記事 →</span>
+                            <span class="article-navigation-title">{{ .Title }}</span>
+                        </a>
+                        {{ end }}
+                    </div>
+                </nav>
+            </main>
+        </article>
+
+
+        <aside class="w-[20%] min-w-[180px] sticky top-28 self-start text-[16px]">
+            {{ .TableOfContents }}
+        </aside>
+    </div>
 </body>
 
 </html>
