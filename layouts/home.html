@@ -30,7 +30,7 @@
 
     {{ .Content }}
 
-    <ul class="grid grid-cols-3 auto-rows-fr gap-6 list-none p-0 ml-[35%] mr-[15%]">
+    <ul class="grid grid-cols-3 auto-rows-fr gap-6 !list-none p-0 ml-[35%] mr-[15%]">
         {{ range where .Site.RegularPages "Section" "articles" }}
         <li class="h-full box-border min-w-0 p-6 bg-white border border-[#ddd] rounded-lg">
             <a href="{{ .RelPermalink }}" class="flex flex-col h-full !no-underline !text-black">

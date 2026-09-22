@@ -34,6 +34,7 @@
       "ul"
     ],
     "classes": [
+      "!list-none",
       "!no-underline",
       "!text-black",
       "article-navigation",
