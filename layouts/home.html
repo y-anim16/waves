@@ -31,26 +31,18 @@
     {{ .Content }}
 
     <ul class="grid grid-cols-3 auto-rows-fr gap-6 !list-none p-0 ml-[35%] mr-[15%]">
-        {{ range where .Site.RegularPages "Section" "articles" }}
-        <li class="h-full box-border min-w-0 p-6 bg-white border border-[#ddd] rounded-lg">
-            <a href="{{ .RelPermalink }}" class="flex flex-col h-full !no-underline !text-black">
-                <div class="text-xl font-bold">
-                    {{ .Title }}
-                </div>
+        {{ $pages := where .Site.RegularPages "Section" "articles" }}
 
-                <div>
-                    {{ .Date.Format "2006.01.02" }}
-                </div>
+        {{ if hugo.IsServer }}
+        {{ with site.GetPage "/tests/style_test" }}
+        {{ $first := first 1 $pages }}
+        {{ $rest := after 1 $pages }}
+        {{ $pages = $first | append . | append $rest }}
+        {{ end }}
+        {{ end }}
 
-                <div class="mt-auto text-right">
-                    {{ with .Params.tags }}
-                    {{ range . }}
-                    {{ partial "category_tag.html" . }}
-                    {{ end }}
-                    {{ end }}
-                </div>
-            </a>
-        </li>
+        {{ range $pages }}
+        {{ partial "article_card.html" . }}
         {{ end }}
     </ul>
 

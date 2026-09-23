@@ -1,0 +1,19 @@
+<li class="h-full box-border min-w-0 p-6 bg-white border border-[#ddd] rounded-lg">
+    <a href="{{ .RelPermalink }}" class="flex flex-col h-full !no-underline !text-black">
+        <div class="text-xl font-bold">
+            {{ .Title }}
+        </div>
+
+        <div>
+            {{ .Date.Format "2006.01.02" }}
+        </div>
+
+        <div class="mt-auto text-right">
+            {{ with .Params.tags }}
+            {{ range . }}
+            {{ partial "category_tag.html" . }}
+            {{ end }}
+            {{ end }}
+        </div>
+    </a>
+</li>

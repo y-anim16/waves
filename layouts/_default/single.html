@@ -59,7 +59,7 @@
                 <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
                 <div class="mb-6">
                     <time>
-                        {{ if .Params.useGitDate }}
+                        {{ if and .Params.useGitDate .GitInfo }}
                         {{ .GitInfo.AuthorDate.Format "2006.01.02" }}
                         {{ else }}
                         {{ .Date.Format "2006.01.02" }}
@@ -75,21 +75,41 @@
 
                 {{ .Content }}
 
+                {{ $pages := where .Site.RegularPages "Section" "articles" }}
+
+                {{ if hugo.IsServer }}
+                {{ with site.GetPage "/tests/style_test" }}
+                {{ $first := first 1 $pages }}
+                {{ $rest := after 1 $pages }}
+                {{ $pages = $first | append . | append $rest }}
+                {{ end }}
+                {{ end }}
+
+                {{ $currentIndex := 0 }}
+
+                {{ range $index, $page := $pages }}
+                {{ if eq $page.RelPermalink $.RelPermalink }}
+                {{ $currentIndex = $index }}
+                {{ end }}
+                {{ end }}
+
                 <nav class="article-navigation">
                     <div class="article-navigation-area article-navigation-prev">
-                        {{ with .PrevInSection }}
-                        <a href="{{ .RelPermalink }}" class="article-navigation-item">
+                        {{ if gt $currentIndex 0 }}
+                        {{ $prev := index $pages (sub $currentIndex 1) }}
+                        <a href="{{ $prev.RelPermalink }}" class="article-navigation-item">
                             <span class="article-navigation-label">前の記事</span>
-                            <span class="article-navigation-title">{{ .Title }}</span>
+                            <span class="article-navigation-title">{{ $prev.Title }}</span>
                         </a>
                         {{ end }}
                     </div>
 
                     <div class="article-navigation-area article-navigation-next">
-                        {{ with .NextInSection }}
-                        <a href="{{ .RelPermalink }}" class="article-navigation-item">
+                        {{ if lt $currentIndex (sub (len $pages) 1) }}
+                        {{ $next := index $pages (add $currentIndex 1) }}
+                        <a href="{{ $next.RelPermalink }}" class="article-navigation-item">
                             <span class="article-navigation-label">次の記事</span>
-                            <span class="article-navigation-title">{{ .Title }}</span>
+                            <span class="article-navigation-title">{{ $next.Title }}</span>
                         </a>
                         {{ end }}
                     </div>
