@@ -95,11 +95,12 @@ img {
     z-index: 9999;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0.0, 0.0, 0.0, 0.8);
 
     cursor: pointer;
 }
@@ -113,6 +114,16 @@ img {
 
     object-fit: contain;
     cursor: default;
+}
+
+@layer components {
+    .image-preview-caption {
+        @apply mt-2 text-[0.85em] text-center text-white;
+    }
+
+    .image-preview-overlay .image-preview-caption {
+        @apply text-[1rem];
+    }
 }
 
 .js-preview-image {

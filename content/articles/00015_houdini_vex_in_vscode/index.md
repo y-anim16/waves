@@ -158,19 +158,19 @@ change_color(@ptnum);
 ### アトリビュートを渡して加工するとき
 引数の型の前に**export**を付けることで、渡したアトリビュートの値を変更できる
 
-VEX
+#### VEX
 ```text
 void set_pos_y(export vector p){
     p.y = 0;
 }
 ```
-Houdini
+#### Houdini
 ```text
 #include "sample.vfl"
 set_pos_y(@P);
 ```
 
-結果  
+#### 結果  
 {{< figure src="image-2.png" alt="" >}}
 {{< figure src="image-1.png" alt="" >}}
 
@@ -178,37 +178,37 @@ set_pos_y(@P);
 逆に値を変えたくない場合、**const**を付ける  
 こうすることで、以下の例だと `vector p`が読み取り専用となり、意図せず値を書き換えようとしていたらエラーとなる
 
-VEX
+#### VEX
 ```text
 void set_pos_y(const vector p){
     p.y = 0;
 }
 ```
-Houdini
+#### Houdini
 ```text
 #include "sample.vfl"
 set_pos_y(@P);
 ```
-エラーの表示  
+#### エラーの表示  
 {{< figure src="image.png" alt="" >}}
 
 ### アトリビュートを複数渡したいとき
 VEX側はセミコロン(;), Houdini側はカンマ(,)で区切る必要がある  
 ややこしい...
 
-VEX
+#### VEX
 ```text
 void set_pos_y(export vector p; int ptnum){
     p.y = ptnum;
 }
 ```
-Houdini
+#### Houdini
 ```text
 #include "sample.vfl"
 set_pos_y(@P, @ptnum);
 ```
 
-結果  
+#### 結果
 {{< figure src="image-3.png" alt="" >}}
 
 ### ch() を使いたいとき
@@ -219,7 +219,7 @@ set_pos_y(@P, @ptnum);
 Houdini側でch()を記述して起き、VEXに渡すのは値だけにした  
 {{< figure src="image-5.png" alt="" >}}
 
-VEX
+#### VEX
 ```text
 void set_pos_y(export vector p; float value){
     p.y = value;
@@ -230,13 +230,13 @@ void set_pos_y(export vector p; float value){
 こっちだと、chrampでも使える  
 https://www.sidefx.com/docs/houdini/vex/functions/relpath.html
 
-VEX
+#### VEX
 ```text
 void set_pos_y(export vector p; const string node){
     p.y = ch(node+"/value");
 }
 ```
-Houdini
+#### Houdini
 ```text
 #include "sample.vfl"
 set_pos_y(@P, relpath("."));
