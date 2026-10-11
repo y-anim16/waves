@@ -200,3 +200,53 @@ article pre {
         @apply block text-left font-bold;
     }
 }
+
+@layer components {
+    aside nav {
+        --toc-highlight-color: #9e9e9e25;
+        --toc-hover-color: #50505025;
+    }
+
+    aside nav ul {
+        margin-block: 0;
+        padding-left: 0;
+        list-style: none;
+        gap: 0;
+        row-gap: 0;
+    }
+
+    aside nav li {
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    aside nav li>ul {
+        margin-block: 0 !important;
+    }
+
+    aside nav a {
+        display: block;
+        margin: 0;
+        padding: 0.35em 0.6em;
+        color: rgb(0 0 0 / 55%) !important;
+        text-decoration: none;
+    }
+
+    aside nav a.is-visible {
+        background-color: var(--toc-highlight-color);
+        color: black !important;
+    }
+
+    aside nav ul ul a.is-visible {
+        box-shadow: -1.2rem 0 0 var(--toc-highlight-color);
+    }
+
+    aside nav a:hover {
+        background-color: var(--toc-hover-color);
+        color: black;
+    }
+
+    aside nav ul ul a:hover {
+        box-shadow: -1.2rem 0 0 var(--toc-hover-color);
+    }
+}
